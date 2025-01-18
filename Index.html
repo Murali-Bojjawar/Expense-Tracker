@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Expense Tracker</h1>
+    </header>
+    <div class="main-container">
+        <nav class="nav">
+            <button id="new-cart-tab" class="active" aria-selected="true">Create New Cart</button>
+            <button id="historical-cart-tab" aria-selected="false">View Historical Carts</button>
+        </nav>
+        <main class="content">
+            <section id="new-cart-content" class="tab-content">
+                <div class="add-item-section">
+                    <h2>Create New Shopping Cart</h2>
+                    <p id="date-display"></p>
+                    <form id="add-item-form">
+                        <label for="item-name" class="visually-hidden">Item Name</label>
+                        <input 
+                            type="text" 
+                            id="item-name" 
+                            placeholder="Item Name" 
+                            required 
+                            aria-label="Enter item name"
+                        >
+                        <label for="item-budget" class="visually-hidden">Budget</label>
+                        <input 
+                            type="number" 
+                            step="0.01" 
+                            id="item-budget" 
+                            placeholder="Budget ($)" 
+                            required 
+                            aria-label="Enter budget amount"
+                        >
+                        <label for="item-actual" class="visually-hidden">Actual</label>
+                        <input 
+                            type="number" 
+                            step="0.01" 
+                            id="item-actual" 
+                            placeholder="Actual ($)" 
+                            required 
+                            aria-label="Enter actual amount spent"
+                        >
+                        <button type="submit" class="btn-primary">
+                            <span>Add Item</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="cart-section">
+                    <h2>Shopping Cart</h2>
+                    <table class="cart-table" id="cart-table" aria-label="Shopping Cart Table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Budget ($)</th>
+                                <th scope="col">Actual ($)</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-body"></tbody>
+                    </table>
+                    <div class="totals" aria-live="polite">
+                        <div>Total Budget: $<span id="total-budget">0.00</span></div>
+                        <div>Total Actual: $<span id="total-actual">0.00</span></div>
+                    </div>
+                </div>
+                <button id="complete-cart-btn" aria-label="Mark cart as complete">Complete Cart</button>
+            </section>
+            <section id="historical-cart-content" class="tab-content" style="display: none;">
+                <h2>Historical Carts</h2>
+                <div id="historical-cart-groups"></div>
+            </section>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; <span id="current-year"></span> Expense Tracker. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
